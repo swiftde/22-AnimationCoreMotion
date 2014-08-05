@@ -9,10 +9,10 @@
 import UIKit
 import CoreMotion
 
-var MAX_X = 0
-var MAX_Y = 0
-let BOX_SIZE: CGFloat = 15
-let NUMBER_OF_BOXES = 80
+var MAX_X: CGFloat = 0
+var MAX_Y: CGFloat = 0
+let BOX_SIZE: CGFloat = 5
+let NUMBER_OF_BOXES = 400
 
 class ViewController: UIViewController {
     
@@ -102,7 +102,7 @@ class ViewController: UIViewController {
             gravity.addItem(newBox)
             collider.addItem(newBox)
             itemBehavior.addItem(newBox)
-            boxes += newBox
+            boxes.append(newBox)
         }
     }
     
@@ -110,9 +110,9 @@ class ViewController: UIViewController {
         var ret = CGRect(x: 0, y: 0, width: BOX_SIZE, height: BOX_SIZE)
         
         do {
-            let x = Int(rand()) % MAX_X
-            let y = Int(rand()) % MAX_Y
-            ret = CGRect(x: CGFloat(x), y: CGFloat(y), width: BOX_SIZE, height: BOX_SIZE)
+            let x = CGFloat(rand()) % MAX_X
+            let y = CGFloat(rand()) % MAX_Y
+            ret = CGRect(x: x, y: y, width: BOX_SIZE, height: BOX_SIZE)
         } while(!doesNotCollide(ret))
         
         return ret
