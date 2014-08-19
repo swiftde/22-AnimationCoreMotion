@@ -56,7 +56,7 @@ class ViewController: UIViewController {
         motionManager.startDeviceMotionUpdatesToQueue(motionQueue, withHandler: {
             motion,error in
             
-            if error {
+            if error != nil {
                 println("Error: \(error.localizedDescription)")
                 return
             }
